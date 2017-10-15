@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "488188095443",
+    "firebase_url": "https://launchpad-e5f1d.firebaseio.com",
+    "project_id": "launchpad-e5f1d",
+    "storage_bucket": "launchpad-e5f1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488188095443:android:31460a365649994d",
+        "android_client_info": {
+          "package_name": "com.example.damonpelser.launchpad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488188095443-j1o0gbjuagtdatoohl327udidje1rm84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.damonpelser.launchpad",
+            "certificate_hash": "7e8ddde552d7da4a56c6c64d3808d0b196c1e08c"
+          }
+        },
+        {
+          "client_id": "488188095443-8efd6bbnb9h62tj5omga7rnm2tua62ml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJw4BG40Sxtz5sawfRE2D_xeKVMM9wK7A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488188095443-8efd6bbnb9h62tj5omga7rnm2tua62ml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

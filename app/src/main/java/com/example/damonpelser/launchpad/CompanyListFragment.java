@@ -14,18 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Damon Pelser on 2017/09/12.
  */
 
-public class SubjectListFragment extends Fragment {
+public class CompanyListFragment extends Fragment {
 
-    private int[] subjectIcon;
-    private String[] subjectName;
+    private int[] cateIcon;
+    private int[] cateIndex;
+    private String[] cateName;
 
-    public static SubjectListFragment newInstance() {
-        return new SubjectListFragment();
+    public static CompanyListFragment newInstance() {
+        return new CompanyListFragment();
     }
 
     @Override
@@ -33,12 +35,14 @@ public class SubjectListFragment extends Fragment {
         super.onAttach(context);
 
         final Resources resources = context.getResources();
-        subjectName = resources.getStringArray(R.array.subjectNames);
+        cateName = resources.getStringArray(R.array.cateNames);
         final TypedArray typedArray = resources.obtainTypedArray(R.array.subjectIcons);
-        final int imageCount = subjectName.length;
-        subjectIcon = new int[imageCount];
+        final int imageCount = cateName.length;
+         cateIcon = new int[imageCount];
+         cateIndex = new int[imageCount];
         for (int i = 0; i < imageCount; i++) {
-            subjectIcon[i] = typedArray.getResourceId(i, 0);
+            cateIcon[i] = typedArray.getResourceId(i, 0);
+            cateIndex[i] = i;
         }
         typedArray.recycle();
     }
@@ -46,7 +50,7 @@ public class SubjectListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_subject_list, container, false);
+        final View view = inflater.inflate(R.layout.company_list_fragment, container, false);
 
         final Activity activity = getActivity();
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
@@ -67,19 +71,25 @@ public class SubjectListFragment extends Fragment {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(mLayoutInflator.inflate(R.layout.subject_item, parent, false));
+            return new ViewHolder(mLayoutInflator.inflate(R.layout.category_item, parent, false));
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            final int icon = subjectIcon[position];
-            final String name = subjectName[position];
+        public void onBindViewHolder(ViewHolder holder, final int position) {
+            final int icon =  cateIcon[position];
+            final String name = cateName[position];
             holder.setData(icon,name);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getContext(), Integer.toString(cateIndex[position]), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
-            return subjectName.length;
+            return cateName.length;
         }
 
     }

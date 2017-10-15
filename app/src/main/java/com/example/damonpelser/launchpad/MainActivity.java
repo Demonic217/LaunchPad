@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.root_layout, SubjectListFragment.newInstance(), "subjectList")
+                    .add(R.id.root_layout, CompanyListFragment.newInstance(), "subjectList")
                     .commit();
         }
     }
