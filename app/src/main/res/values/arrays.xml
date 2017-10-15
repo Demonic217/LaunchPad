@@ -11,7 +11,7 @@
         <item>General</item>
     </array>
 
-    <array name="subjectIcons">
+    <array name="cateIcons">
         <item>@drawable/health_book</item>
         <item>@drawable/health_book</item>
         <item>@drawable/health_book</item>
