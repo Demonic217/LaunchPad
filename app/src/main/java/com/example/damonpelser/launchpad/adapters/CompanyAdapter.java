@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.damonpelser.launchpad.R;
 import com.example.damonpelser.launchpad.models.CompanyModel;
 
@@ -54,6 +55,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.MyViewHo
         holder.companyDesc.setText(company.getCompDesc());
         holder.companyOppo.setText(company.getCompOpp());
         holder.companyName.setText(company.getCompName());
+        Glide.with(mContext).load(company.getCompLogo()).into(holder.companyLogo);
     }
 
     @Override

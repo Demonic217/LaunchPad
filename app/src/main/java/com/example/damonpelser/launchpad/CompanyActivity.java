@@ -8,7 +8,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.damonpelser.launchpad.adapters.CompanyAdapter;
 import com.example.damonpelser.launchpad.models.CompanyModel;
@@ -18,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ import java.util.List;
 public class CompanyActivity extends AppCompatActivity {
 
     private List<CompanyModel> companyList;
-    private FirebaseFirestore db;
+    private FirebaseFirestore mFirestore;
     private CompanyAdapter companyAdapter;
     private RecyclerView recyclerView;
     private String category;
@@ -48,7 +49,7 @@ public class CompanyActivity extends AppCompatActivity {
         selectCategory(cateInt);
         companyList = new ArrayList<>();
 
-        db = FirebaseFirestore.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -95,13 +96,14 @@ public class CompanyActivity extends AppCompatActivity {
         {
             companyList.clear();
         }
-        db.collection(category)
+        mFirestore.collection(category)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for(DocumentSnapshot doc:task.getResult()){
-                            CompanyModel companyDbData = new CompanyModel(doc.getString("cName"),
+                            CompanyModel companyDbData = new CompanyModel(doc.getString("cLogo"),
+                                                                        doc.getString("cName"),
                                                                         doc.getString("closeDate"),
                                                                         doc.getString("description"),
                                                                         doc.getString("latitude"),
