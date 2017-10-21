@@ -1,6 +1,7 @@
 package com.example.damonpelser.launchpad.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.damonpelser.launchpad.CompanyActivity;
 import com.example.damonpelser.launchpad.R;
 import com.example.damonpelser.launchpad.models.CategoryModel;
 
@@ -58,6 +60,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, Integer.toString(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, CompanyActivity.class);
+                intent.putExtra("cateInt",holder.getAdapterPosition());
+                mContext.startActivity(intent);
             }
         });
 
