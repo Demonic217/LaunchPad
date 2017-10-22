@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private CategoryAdapter categoryAdapter;
     private List<CategoryModel> categoryList;
 
-    //
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

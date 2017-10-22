@@ -59,7 +59,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, Integer.toString(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, Integer.toString(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, CompanyActivity.class);
                 intent.putExtra("cateInt",holder.getAdapterPosition());
