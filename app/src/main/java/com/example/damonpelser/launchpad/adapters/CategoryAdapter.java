@@ -53,13 +53,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         CategoryModel category = categoryList.get(position);
         Glide.with(mContext).load(category.getCateIcon()).into(holder.categoryIcon);
-        //holder.categoryIcon.setImageResource(category.getCateIcon());
         holder.categoryName.setText(category.getCateName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(mContext, Integer.toString(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, CompanyActivity.class);
                 intent.putExtra("cateInt",holder.getAdapterPosition());

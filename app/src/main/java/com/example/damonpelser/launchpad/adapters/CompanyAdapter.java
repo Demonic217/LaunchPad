@@ -1,6 +1,8 @@
 package com.example.damonpelser.launchpad.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.damonpelser.launchpad.CompanyDetailsActivity;
 import com.example.damonpelser.launchpad.R;
 import com.example.damonpelser.launchpad.models.CompanyModel;
 
@@ -51,11 +54,30 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        CompanyModel company = companyList.get(position);
+        final CompanyModel company = companyList.get(position);
         holder.companyDesc.setText(company.getCompDesc());
         holder.companyOppo.setText(company.getCompOpp());
         holder.companyName.setText(company.getCompName());
         Glide.with(mContext).load(company.getCompLogo()).into(holder.companyLogo);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CompanyDetailsActivity.class);
+
+                intent.putExtra("compLogo",company.getCompLogo());
+                intent.putExtra("compName",company.getCompName());
+                intent.putExtra("compOpp",company.getCompOpp());
+                intent.putExtra("compDesc",company.getCompDesc());
+                intent.putExtra("compCrit",company.getCompCriteria());
+                intent.putExtra("compTnC", company.getCompTC());
+                intent.putExtra("compCDate",company.getCloseDate());
+                intent.putExtra("compLat",company.getCompLat());
+                intent.putExtra("compLong",company.getCompLong());
+
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

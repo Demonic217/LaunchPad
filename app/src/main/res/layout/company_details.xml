@@ -78,5 +78,13 @@
             android:textSize="25sp"
             android:text="Closing Date"/>
 
+        <fragment
+            android:id="@+id/map"
+            android:layout_below="@+id/closeDate"
+            android:layout_margin="15dp"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
     </RelativeLayout>
  </ScrollView>

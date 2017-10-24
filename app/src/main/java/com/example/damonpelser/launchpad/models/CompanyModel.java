@@ -5,8 +5,7 @@ package com.example.damonpelser.launchpad.models;
  */
 
 public class CompanyModel {
-    //TODO Add compIcon back once I figure out how to pull the logo strings from storage
-    String compLogo, compName, closeDate, compDesc, compLat, compLong, compOpp, compCriteria, compTC;
+    private String compLogo, compName, closeDate, compDesc, compLat, compLong, compOpp, compCriteria, compTC;
 
     public CompanyModel(String compLogo, String compName, String closeDate, String compDesc, String compLat, String compLong, String compOpp, String compCriteria, String compTC) {
         this.compName = compName;
